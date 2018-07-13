@@ -1,0 +1,172 @@
+/*
+ * Defaults
+ */
+body, div { font-family: verdana,tahoma,sans-serif; font-size: medium; }
+
+/*
+ * text formats
+ */
+
+.lbl1 { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: grey; }
+.lbl1a { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: grey; }
+.lbl2 { color: grey; font-family: monaco, "lucid console"; font-size: x-small; }
+.lnk1 { font-size: small; font-family: geneva,tahoma,sans-serif; font-weight: normal; color: black; }
+.lnk1 a { text-decoration: none; color: blue; }
+.uttl { font-size: large; color: brown; }
+.alert1 { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: red; }
+.alert2 { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: green; }
+span.location { color: #567; font-family: monaco, "lucid console"; font-size: small; font-weight: bold; }
+.blacktext { color: black; }
+
+.flbeg { float: left; margin-left: 0; }
+.flmid { float: left; margin-left: 1em; }
+.flend { clear: both; }
+
+/*
+ * tags
+ */
+div.toptitle { margin-bottom: 4px; padding: 8px 0 0 100px; color: #666; font-size: 20px; }
+form.tight { margin: 0; display: inline; }
+div.flbeg { float: left; border: solid tan 0 1px 0 1px; }
+div.flmid { float: left; border: 1px 1px 1px 1px; }
+div.flend { clear: both; }
+
+div.mainpanel { margin: auto; padding: 4px; width: 900px; background: #eef; border-radius: 10px; }
+
+div.bodypanel_light { background: #abc; padding: .5em; border-radius: 8px; color: #234; }
+div.bodypanel_light .lbl1 { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: #567; }
+
+div.bodypanel { background: #567; padding: 2px .5em .5em .5em; border-radius: 8px; }
+div.bodypanel .lbl1 { font-size: x-small; font-family: geneva,tahoma,sans-serif; color: #abc; }
+div.bodypanel .lbl2 { font-size: medium; font-family: geneva,tahoma,sans-serif; color: #abc; }
+div.bodypanel a{ text-decoration: underline; font-size: small; color: #abc; }
+
+
+/* tabs */
+#tablist{ padding: 3px 0 3px 2em; margin-left: 0; margin-bottom: 6px; margin-top: 0.1em; font: bold 12px verdana,geneva,tahoma,sans-serif; border-bottom: 1px solid gray; }
+#tablist li{ list-style: none; display: inline; margin: 0; }
+#tablist li a{ text-decoration: none; padding: 3px 0.5em; margin-right: 3px; border: 1px solid #778; border-bottom: none; background: lightgray; }
+#tablist li a:link, #tablist li a:visited{ color: navy; }
+#tablist li a:hover{ color: black; background: lightyellow; border-color: navy; }
+#tablist li a.current{ background: white; border-bottom: 2px solid white; }
+
+/*
+ * TABLES
+ */
+
+ .ct3 { width: 100%; font-family: verdana,geneva,tahoma,sans-serif; font-size: x-small; border-collapse: collapse; }
+ .ct3 .hdg { color: brown; }
+ .ct3 caption { text-align: left;  font-weight: bold; }
+ .ct3 thead th { border: 1px solid tan; font-weight: bold; text-align: center;}
+ .ct3 thead tr { vertical-align: bottom; }
+ .ct3 tbody td { border: 1px solid tan; padding-left: 3px; padding-right: 3px; }
+ .ct3 tbody tr { vertical-align: top; }
+ .ct3 th { border: 1px solid tan; font-weight: bold; text-align: center; background-color: tan; color: brown;}
+ .ct3 td { border: 1px solid tan; padding-left: 3px; padding-right: 3px; }
+/*.ct3 th.empty,td.empty { border: 0px; background-color: transparent; }*/
+ .ct3 a { text-decoration: none; font-weight: normal; color: blue; }
+ .ct3 input { font-size: x-small; }
+
+ table.bodypanel { width: 100%; font-family: verdana,geneva,tahoma,sans-serif; font-size: x-small; border-collapse: collapse; }
+ table.bodypanel caption { text-align: center; font-size: medium; color: #eef; }
+ table.bodypanel thead th { border: 1px solid #567; font-weight: bold; text-align: center;}
+ table.bodypanel thead tr { vertical-align: bottom; }
+ table.bodypanel tbody td { border: 1px solid #789; padding-left: 3px; padding-right: 3px; }
+ table.bodypanel tbody tr { vertical-align: top; }
+ table.bodypanel tbody tr:nth-child(even) { background-color: #eef; }
+ table.bodypanel tbody tr:nth-child(odd) { background-color: #abc; }
+ table.bodypanel th { border: 1px solid #567; font-weight: normal; text-align: center; background-color: #345; color: #eef;}
+ table.bodypanel td { border: 1px solid #abc; padding-left: 3px; padding-right: 3px; }
+ table.bodypanel a { text-decoration: none; color: blue; }
+
+/*
+ * MENUS
+ */
+
+/*
+ * top menu
+ */
+
+#topmenu {
+	background: #333;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 90px;
+	width: 90%;
+}
+#topmenu li {
+	float: left;
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#topmenu a {
+	background: #333 url("images/seperator.gif") bottom right no-repeat;
+	color: #ccc;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 8px 12px;
+	text-decoration: none;
+	font-weight:normal;
+}
+#topemenu a .selected { background: #DDD; }
+#topmenu a:hover {
+	background: #2580a2 url("images/hover.gif") bottom center no-repeat;
+	color: #fff;
+	padding-bottom: 8px;
+	}
+
+#leftmenu {
+	/*float: left;*/
+	list-style: none;
+	/*margin: 0;*/
+	margin: 4px 0 0 4px;
+	padding: 0;
+}
+#leftmenu li {
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#leftmenu a {
+	/*border-bottom: 1px solid #393939;*/
+	color: #333;
+	display: block;
+	margin: 0;
+	/*padding: 8px 12px;*/
+	padding-left: 4px;
+	text-decoration: none;
+}
+#leftmenu a:hover {
+	/*background: #333 url("images/vhover.gif") left center no-repeat;*/
+	background: white;
+	color: brown;
+	padding-left: 4px;
+	/*padding-bottom: 8px;*/
+}
+
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssmenus.co.uk
+Copyright (c) 2009- Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+#pad {height:140px;}
+
+#menu {padding:0; margin:0; list-style:none; width:100%; background:#ddd; }
+#menu li {
+	float: left;
+	margin-left: 1px;
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+}
+#menu li a {display:block; padding:0 20px; float:left; background:#ddd; color:#000; text-decoration:none;}
+/*#menu li a b {text-transform:uppercase;}*/
+#menu li a:hover, .single #menu li#single a {background: #fff url("images/arrow.gif") no-repeat center bottom; color:#e60;}
+
+.reslist { padding: 6px; color: #abc }
+.reslist a { text-decoration: none; color: #258; font-family: sans-serif; }

@@ -1,0 +1,12 @@
+ .ct3 { width: 100%; border-radius: 5px; font-family: verdana,geneva,tahoma,sans-serif; font-size: x-small; border-collapse: collapse; }
+ .ct3 .hdg { color: brown; }
+ .ct3 caption { text-align: left;  font-weight: bold; }
+ .ct3 thead th { border: 1px solid tan; font-weight: bold; text-align: center;}
+ .ct3 thead tr { vertical-align: bottom; }
+ .ct3 tbody td { border: 1px solid tan; padding-left: 3px; padding-right: 3px; }
+ .ct3 tbody tr { vertical-align: top; }
+ .ct3 th { border: 1px solid tan; font-weight: bold; text-align: center; background-color: tan; color: brown;}
+ .ct3 td { border: 1px solid tan; padding-left: 3px; padding-right: 3px; }
+/*.ct3 th.empty,td.empty { border: 0px; background-color: transparent; }*/
+ .ct3 a { text-decoration: none; font-weight: normal; color: blue; }
+ .ct3 input { font-size: x-small; }

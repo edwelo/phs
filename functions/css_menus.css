@@ -1,0 +1,84 @@
+/*
+ * top menu
+ */
+
+#topmenu {
+	background: #333;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 90px;
+	width: 90%;
+}
+#topmenu li {
+	float: left;
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#topmenu a {
+	background: #333 url("images/seperator.gif") bottom right no-repeat;
+	color: #ccc;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 8px 12px;
+	text-decoration: none;
+	font-weight:normal;
+}
+#topemenu a .selected { background: #DDD; }
+#topmenu a:hover {
+	background: #2580a2 url("images/hover.gif") bottom center no-repeat;
+	color: #fff;
+	padding-bottom: 8px;
+	}
+
+#leftmenu {
+	/*float: left;*/
+	list-style: none;
+	/*margin: 0;*/
+	margin: 4px 0 0 4px;
+	padding: 0;
+}
+#leftmenu li {
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#leftmenu a {
+	/*border-bottom: 1px solid #393939;*/
+	color: #333;
+	display: block;
+	margin: 0;
+	/*padding: 8px 12px;*/
+	padding-left: 4px;
+	text-decoration: none;
+}
+#leftmenu a:hover {
+	/*background: #333 url("images/vhover.gif") left center no-repeat;*/
+	background: white;
+	color: brown;
+	padding-left: 4px;
+	/*padding-bottom: 8px;*/
+}
+
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssmenus.co.uk
+Copyright (c) 2009- Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+#pad {height:140px;}
+
+#menu {padding:0; margin:0; list-style:none; width:100%; background:#ddd; }
+#menu li {
+	float: left;
+	margin-left: 1px;
+	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+}
+#menu li a {display:block; padding:0 20px; float:left; background:#ddd; color:#000; text-decoration:none;}
+/*#menu li a b {text-transform:uppercase;}*/
+#menu li a:hover, .single #menu li#single a {background: #fff url("images/arrow.gif") no-repeat center bottom; color:#e60;}

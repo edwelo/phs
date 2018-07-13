@@ -1,0 +1,14 @@
+/*
+ * Defaults
+ */
+body, div { font-family: verdana,tahoma,sans-serif; font-size: medium; }
+
+/*
+ * text formats
+ */
+
+.lbl1 { font-size: x-small; font-family: "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif; color: grey; }
+.lbl2 { color: grey; font-family: monaco, "lucid console"; font-size: x-small; }
+.lnk1 { font-size: small; font-family: geneva,tahoma,sans-serif; font-weight: normal; color: black; }
+.lnk1 a { text-decoration: none; color: blue; }
+.title { font: 30px Serif; }
