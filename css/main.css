@@ -82,6 +82,38 @@ div.bodypanel a{ text-decoration: underline; font-size: small; color: #abc; }
 /*
  * MENUS
  */
+ 
+.menu_wrap {
+	display: table;
+	margin: 0 auto 0 auto;
+}
+ 
+.group {
+	float: left;
+	margin: 0 2em;
+	text-align: center;
+}
+
+.l1 {
+	padding: 4px; 
+	font-size: x-large; 
+	color: gray;
+	text-align: center;
+}
+
+.l2 {
+	margin: 1em 0 0 0; 
+	border: 1px solid grey; 
+	border-radius: 6px; 
+	padding: 4px; 
+	text-align: center;
+}
+
+.l2 a {
+	text-decoration: none;
+	font-size: medium;
+	color: gray;
+}
 
 /*
  * top menu

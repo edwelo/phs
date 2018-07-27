@@ -24,7 +24,7 @@
 	}
 
 	//which area are we going into
-	$areas = array("Administrators", "Counselors", "Teachers", "Students", "Registration", "Public");
+	$areas = array("Administrator", "Counselor", "Teacher", "Student", "Registration", "Public");
 	if(in_array($_GET["area"], $areas)) {
 		$tpldata["area"] = $_GET["area"];
 	} else {
@@ -33,11 +33,6 @@
 	
 	$tpldata["back_link"] = "?area=" . $tpldata["area"];
 	$tpldata["unit_fullname"] = "PHS SIS " . $tpldata["area"] . " Pages";
-
-	//must be logged in to go into non-public areas
-	if($tpldata["area"] != "Public" && !$_SESSION["uid"] && !$_POST["log_action"] == "login") {
-		require_once("go_to_login.inc");
-	}
 
 	//set $uid
 	if($_SESSION["uid"] && $_SESSION["cn"]) {
@@ -49,20 +44,43 @@
 		$tpldata["cn"] = "Anonymous";
 	}
 	
+	//get the content
 	if($_POST["log_action"] == "login") {
 		$content_html = file_get_contents("login.tpl");
 	} else {
-		if($_GET["t2"]) {
-			require_once("X");
+		if($uid) {
+			if($_GET["t1"]) {
+				if($_GET["t1"] == "Menu") {
+					require_once("menu.inc");
+				} else {
+					$t1 = strtolower($_GET["t1"]);
+					
+					$func = strtolower($tpldata["area"] . "_" . $_GET["t1"]);
+					if(is_file("includes/${func}.inc")) {
+						require_once($func . ".inc");
+					} else {
+						if(is_file("includes/${func}.inc")) {
+							require_once($func . ".tpl");
+						} else {
+							
+						}	
+					}
+				}
+			} else {
+				if(is_file("templates/" . strtolower($tpldata["area"]) . "/welcome.tpl")) {
+					$content_html = file_get_contents("templates/" . strtolower($tpldata["area"]) . "/welcome.tpl");
+				} else {
+					$content_html = "<h1>U N D E R &nbsp;&nbsp; C O N S T R U C T I O N</h1>";
+				}	
+			}
 		} else {
 			if(is_file("templates/" . strtolower($tpldata["area"]) . "/welcome.tpl")) {
 				$content_html = file_get_contents("templates/" . strtolower($tpldata["area"]) . "/welcome.tpl");
-			}			
+			} else {
+				$content_html = "<h1>U N D E R &nbsp;&nbsp; C O N S T R U C T I O N</h1>";
+			}	
 		}
-		//require_once("index-logged-in.inc");
 	}
-
-	if(!$content_html) $content_html = file_get_contents("under_construction.tpl");
 
 	$main_html = file_get_contents("main.tpl");
 

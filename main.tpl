@@ -8,6 +8,9 @@
 	<style type="text/css">
 		<!-- insert custom css here -->
 	</style>
+	<script type="text/javascript">
+		//window.onload = function() { moveToNewDB(); }
+	</script>
 </head>
 
 <body style='background-color: #666; font-family: "Lucida Grande", Arial, sans-serif;'>
@@ -31,7 +34,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		{area}
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button style="width: 7em;"><a style="text-decoration: none; color: black;" href='?area={area}'>Menu</a></button>
+		<button style="width: 7em;"><a style="text-decoration: none; color: black;" href='?area={area}&t1=Menu'>Menu</a></button>
 		<!-- /location bar -->
 	</div>
 
@@ -51,7 +54,4 @@
 </div>
 
 </body>
-<script type="text/javascript">
-window.onload = moveToNewDB();
-</script>
 </html>
