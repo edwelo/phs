@@ -1,0 +1,67 @@
+core	9	Applied Math	am	math
+core	9	CD I	cdi	othr
+core	9	English I	engi	eng
+core	9	English Reading and Writing	erw	eng
+core	9	General Science	gs	sci
+core	9	Health	hlth	othr
+core	9	Palauan I	psi	ps
+core	9	World Geography	wg	ss
+core	10	Algebra I	ai	math
+core	10	Biology	bio	sci
+core	10	CD II	cdii	othr
+core	10	English II	engii	eng
+core	10	Physical Education	pe	othr
+core	10	Palauan Studies II	psii	ps
+core	10	World History	wh	ss
+core	11	Academy:	aca	othr
+core	11	Academy:	acb	othr
+core	11	Algebra II	aii	math
+core	11	Chemistry	chem	sci
+core	11	English III	engiii	eng
+core	11	Palauan History	ph	ss
+core	12	Academy:	acc	othr
+core	12	Academy:	acd	othr
+core	12	English IV	engiv	eng
+core	12	Geometry	geom	math
+elective	10	Advance PE	ape	othr
+elective	10	Basic Carpentry	bc	othr
+elective	10	Basic Architecture	ba	othr
+elective	11	Computer Literacy	cl	othr
+elective	11	General Business	gb	othr
+elective	11	Japanese I	ji	othr
+elective	11	Journalism	jour	eng
+elective	11	Office Practice	op	othr
+elective	11	U.S. History	ush	ss
+elective	12	Comparative Government	cg	ss
+elective	12	Economics	econ	othr
+elective	12	Japanese II	jii	othr
+elective	12	Physics	phys	sci
+elective	12	Trigonometry	trig	math
+elective	12	World Literature	wl	eng
+academy		Agriculture I	agi
+academy		Agriculture II	agii
+academy		Construction Tech I	cti
+academy		Construction Tech II	ctii
+academy		Construction Tech III	ctiii
+academy		Construction Tech IV	ctiv
+academy		Automotive Tech I	ati
+academy		Automotive Tech II	atii
+academy		Automotive Tech III	atiii
+academy		Automotive Tech IV	ativ
+academy		Intro to Business	ib
+academy		Computer Application I	cai
+academy		Computer Application II	caii
+academy		Business Math	bm
+academy		Bookkeeping	bk
+academy		Hotel Operations I	hoi
+academy		Hotel Operations II	hoii
+academy		Tour Guide Principles	tgp
+academy		Tour Operation Management	tom
+academy		Intro to Anatomy and Physiology	iap
+academy		Math for Health Careers	mhc
+academy		Communication in Health Careers	chc
+academy		Community Health in Palau and Micronesia	chpm
+academy		Intro to Liberal Arts and Social Sciences	ilass
+academy		Intro to College Prep	icp
+academy		Communication in Liberal Arts	cla
+academy		Contemporary Issues in Palau and Micronesia	cipm

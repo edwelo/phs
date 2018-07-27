@@ -1,0 +1,6 @@
+[units]
+administrator:phsmgmt:PHS SIS - Administrator Pages
+counselor:phscouns:PHS SIS - Counselor Pages
+teacher:phstchrs:PHS SIS - Teacher Pages
+student:phsstudents:PHS SIS - Sudent Pages
+registration:phsreg:PHS SIS - Registration Pages

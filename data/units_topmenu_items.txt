@@ -1,0 +1,3 @@
+phscouns:General,Student Lists,Student Info,Reports,Other
+phstchrs:General,,,,
+phsstudents:General,,,,
