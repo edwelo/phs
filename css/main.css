@@ -202,3 +202,19 @@ way to fit your requirements.
 
 .reslist { padding: 6px; color: #abc }
 .reslist a { text-decoration: none; color: #258; font-family: sans-serif; }
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+	width: 7em;
+	margin-bottom: 2px;
+	padding-top: 3px;
+    text-decoration: none;
+    background-color: white;
+    font-size: x-small; 
+    font-family: geneva,tahoma,sans-serif; 
+    font-weight: normal; 
+    color: black;
+}

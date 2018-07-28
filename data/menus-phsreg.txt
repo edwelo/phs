@@ -1,1 +1,1 @@
-Operations	Info, Load, Schedule, Schedule Adjust, Class List, Class Adjust
+Operations	Info, Load, Teachers, Schedule, Schedule Adjust, Class List, Class Adjust

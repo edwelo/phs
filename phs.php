@@ -15,8 +15,9 @@
 	//client ip
 	$tpldata["client_ip"] = $_SERVER["REMOTE_ADDR"];
 
-	//global variables ($db, $tpldata, $clientip, etc)
-	//require_once("globals.inc");
+	//load functions
+	require_once("functions/functions.inc");
+	require_once("functions/functions-tables.inc");
 
 	//authentication
 	if($_POST["username"] && $_POST["password"]) {
@@ -31,7 +32,10 @@
 		$tpldata["area"] = "Public";
 	}
 	
-	$tpldata["back_link"] = "?area=" . $tpldata["area"];
+	//javascript
+	if(!$js) $tpldata["js"] = "null.js";
+	
+	$tpldata["back_link"] = "area=" . $tpldata["area"];
 	$tpldata["unit_fullname"] = "PHS SIS " . $tpldata["area"] . " Pages";
 
 	//set $uid
@@ -46,24 +50,42 @@
 	
 	//get the content
 	if($_POST["log_action"] == "login") {
-		$content_html = file_get_contents("login.tpl");
+		$content_html = file_get_contents("templates/login.tpl");
 	} else {
 		if($uid) {
 			if($_GET["t1"]) {
 				if($_GET["t1"] == "Menu") {
-					require_once("menu.inc");
+					require_once("includes/menu.inc");
 				} else {
 					$t1 = strtolower($_GET["t1"]);
+					$t2 = strtolower(str_replace(" ", "", $_GET["t2"]));
+					$dir = strtolower($tpldata["area"]);
 					
-					$func = strtolower($tpldata["area"] . "_" . $_GET["t1"]);
-					if(is_file("includes/${func}.inc")) {
-						require_once($func . ".inc");
-					} else {
-						if(is_file("includes/${func}.inc")) {
-							require_once($func . ".tpl");
+					$func = strtolower($t1 . "-" . $t2);
+					$include_file_fullpath = "includes/${dir}/${func}.inc";
+					$template_file_fullpath = "templates/${dir}/${func}.tpl";
+					$js_file_fullpath = "js/${dir}/${func}.js";
+					
+					if(is_file($include_file_fullpath)) {
+						$tpl = "";
+						if(is_file($template_file_fullpath)) {
+							$tpl = file_get_contents($template_file_fullpath);
+						}
+						if(is_file($js_file_fullpath)) {
+							$tpl = str_replace("{incJS}", file_get_contents($js_file_fullpath), $tpl);
+						}
+						require_once($include_file_fullpath);
+						if($tpl) {
+							$content_html = $tpl;
 						} else {
-							
-						}	
+							$content_html = $func . " did not generate any content.";	
+						}
+					} else {
+						if(is_file($template_file_fullpath)) {
+							$content_html = file_get_contents($template_file_fullpath);
+						} else {
+							$content_html = "<p>includes/${dir}/${func} file not found!</p>";
+						}
 					}
 				}
 			} else {
@@ -82,7 +104,7 @@
 		}
 	}
 
-	$main_html = file_get_contents("main.tpl");
+	$main_html = file_get_contents("templates/main.tpl");
 
 	//
 	$content_marker = "<!-- insert dynamic content html -->";

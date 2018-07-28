@@ -26,7 +26,7 @@ function get_teachers() {
 			$tmp2[$key] = null;
 		}
 	}
-	
+
 	while($tmp = $rs->fetch_assoc()) {
 		$arr[] = $tmp + $tmp2;
 	}
@@ -56,7 +56,7 @@ function get_teachers() {
 	
 	return $arr;
 	
-$db->close;
+	$db->close;
 
 }
 
