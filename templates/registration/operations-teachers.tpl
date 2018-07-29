@@ -1,3 +1,7 @@
+<div style="float: right;">
+	<button id="saveBtn" type="button" onclick="get_teachers('save');">Save</button>
+</div>
+
 <span class=lbl1>Enter Registration School Year: </span>
 <select name="registration_year" onchange="get_teachers(this.value);">
 	<option value="">- - -</option>
@@ -8,13 +12,15 @@
 </select>
 <br />
 
+<div style="clear: both;"></div>
+
 <table id=teacherTable class=bodypanel>
 	<thead>
 		<tr>
 			<th rowspan=2>dept</th>
 			<th rowspan=2>teacherId</th>
 			<th rowspan=2>teacherName</th>
-			<th rowspan=2><span id=year></span></th>
+			<th rowspan=2 id="year"></th>
 			<th colspan=4>1st Semester </th>
 			<th colspan=4>2nd Semester</th>
 		</tr>
@@ -67,7 +73,7 @@
 			<span style="cursor: pointer; display: block;" onclick="set_new_course_id(this);"></span>
 		</div>
 		<p>
-			Current Course:<br />
+			<span style="font-size: small; color: grey;">Current Course:</span><br />
 			<span id="current_course"></span>
 			<br /><br />
 			<button type="button" onclick="set_new_course_id('clear');">

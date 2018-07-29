@@ -5,6 +5,13 @@ var teachers = null;
 var deptsCourses = null;
 var teachersAssigns = [];
 var newCourseId = null;
+var year = 0;
+var phssy = 0;
+
+var tbl = document.getElementById("teacherTable");
+var tBody = tbl.tBodies[0];
+var tblLength;
+var tBodyLength;
 
 var semPerCol = {"11":4,"12":5,"13":6,"14":7,"21":4,"22":5,"23":6,"24":7};
 
@@ -50,8 +57,6 @@ function reset_popup() {
 }
 
 function choose_course(obj) {
-
-	var tbl = document.getElementById("teacherTable");
 
 	var cIndex = obj.cellIndex;
 	var row = obj.parentNode;
@@ -117,15 +122,18 @@ function choose_course(obj) {
 
 }
 
-function clear_table(obj) {
-	while(obj.rows[1] != undefined) {
-		obj.deleteRow(1);
+function clear_table() {
+
+	tbl.rows[0].cells[3].innerHTML = ""; //year field
+	
+	while(tBody.rows[1] != undefined) {
+		tBody.deleteRow(1);
 	}
-	var datas = obj.rows[0].getElementsByTagName("data");
+	var datas = tBody.rows[0].getElementsByTagName("data");
 	for(i=0, il=datas.length; i<il; i++) {
 		datas[i].innerHTML = "";
 	}
-	var inputs = obj.rows[0].getElementsByTagName("input");
+	var inputs = tBody.rows[0].getElementsByTagName("input");
 	for(i=0, il=inputs.length; i<il; i++) {
 		inputs[i].value = "";
 		if(inputs[i].name == "active") inputs[i].checked = false;
@@ -133,15 +141,8 @@ function clear_table(obj) {
 }
 
 function get_teachers(str) {
-	if (str == "") {
-		document.getElementById("txtHint").innerHTML = "";
-		return;
-	} else { 
 	
-		var year = str;
-		var phssy = year - 1;
-	
-		document.getElementById("year").innerHTML = year;
+	if (str != "" && str != null && str != undefined) {
 	
 		if (window.XMLHttpRequest) {
 			// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -161,9 +162,8 @@ function get_teachers(str) {
 				
 				deptsCourses = obj["depts"];
 				
-				var tBody = document.getElementById("teacherTable").tBodies[0];
-				clear_table(tBody);
-				
+				clear_table();
+
 				if(tBody.rows.length < 1) {
 					alert("document.teacherTable must have at least 1 data row.");
 					return;
@@ -216,9 +216,94 @@ function get_teachers(str) {
 					} 
 				}
 				
+				tblLength = tbl.rows.length;
+				tBodyLength = tBody.rows.length;
+				
 			}
 		};
-		xmlhttp.open("GET","apis/backend.php?pn=Registration&t1=Operations&t2=Teachers&year=" + year,true);
-		xmlhttp.send();
+		
+		if(str == "save" && year) {
+			
+			var json = save();
+			//console.log(json);
+			
+			xmlhttp.open("PUT","apis/backend.php?pn=Registration&t1=Operations&t2=Teachers&year=" + year + "&save=1",true);
+			xmlhttp.setRequestHeader('Content-type','application/json');
+			xmlhttp.send(json);		
+
+		} else {
+
+			year = str;
+			var phssy = year - 1;
+		
+			//alert(year);
+		
+			document.getElementById("year").innerHTML = year;
+			//console.log(span_year);
+		
+			xmlhttp.open("GET","apis/backend.php?pn=Registration&t1=Operations&t2=Teachers&year=" + year,true);
+			xmlhttp.send();		
+		}
+
 	}
+}
+
+function save() {
+
+	console.log("tbl rows: " + tbl.rows.length, tbl.rows);
+	console.log("tbody rows: " + tBody.rows.length, tBody.rows);
+		
+	var keys = ["11", "12", "13", "14", "21", "22", "23", "24"];
+	
+	//year = document.getElementById("year").innerHTML;
+	
+	var jsonId = "tchrAssigns_" + year;
+	var toJSON = {};
+	toJSON[jsonId] = [];
+	
+	console.log(toJSON);
+	
+	for(r=0, rl=tBodyLength; r<rl; r++) {
+	
+		var datas = tBody.rows[r].getElementsByTagName("data");
+		var dept = datas[0].innerHTML;
+		var teacherId = datas[1].innerHTML;
+		var teacherName = datas[2].innerHTML;
+		
+		//semPer columns
+		for(i=0; i<8; i++) {
+			let c = i + 4;
+			str = tBody.rows[r].cells[c].innerHTML;
+			str.trim();
+			if(str) {
+				var key = keys[i];
+
+				var tmp = str.split(" ", 2);
+				var crsId = tmp[0];
+				var crsSName = tmp[1];
+				 
+				var tmp2 = {};
+				
+				tmp2.deptAbbrv = dept;
+				tmp2.teacherId = teacherId;
+				tmp2.teacherName = teacherName;
+				tmp2.semPer = key;
+				tmp2.courseId = crsId;
+				tmp2.courseNameShort = crsSName;
+				
+				//console.log(tmp2);
+				
+				toJSON[jsonId].push(tmp2);
+				
+			}
+		}
+	}
+
+	var json = JSON.stringify(toJSON);
+	
+	console.log(toJSON);
+	console.log(json);
+	
+	return json;
+	
 }
