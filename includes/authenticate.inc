@@ -3,13 +3,26 @@
 ## SECTION: Authentication
 #######
 
-if($_POST["username"] == "edwel" && ($tpldata["client_ip"] == "127.0.0.1" || $tpldata["client_ip"] == "::1")) {
+if($_POST["username"] == "Edwel" && $_POST["password"] == "1970") {
 	$_SESSION['uid'] = "edwel";
 	$_SESSION['cn'] = "Edwel Ongrung";
 	$_SESSION['uidnumber'] = 2071;
 	$_SESSION['o'] = "MOE";
 	$_SESSION['persid'] = $_SESSION['uidnumber'] - 2000;
 	$_SESSION['teacherId'] = 175;
+	#$tmp1 = "Arnel Bautista"; $tmp2 = 2664; $tmp3 = strtolower(str_replace(" ", "", $tmp1));
+	#$tmp1 = "Earl Britanico"; $tmp2 = 2773; $tmp3 = strtolower(str_replace(" ", "", $tmp1));
+	#$tmp1 = "Noel Reyes"; $tmp2 = 2623; $tmp3 = strtolower(str_replace(" ", "", $tmp1));
+	#Robinson Skiwo 165
+}
+
+if($_POST["username"] == "Ameeshi" && $_POST["password"] == "180604") {
+	$_SESSION['uid'] = "ameeshi";
+	$_SESSION['cn'] = "Ameeshi Goel";
+	$_SESSION['uidnumber'] = 9999;
+	$_SESSION['o'] = "MOE";
+	$_SESSION['persid'] = $_SESSION['uidnumber'] - 9999;
+	$_SESSION['teacherId'] = 9999;
 	#$tmp1 = "Arnel Bautista"; $tmp2 = 2664; $tmp3 = strtolower(str_replace(" ", "", $tmp1));
 	#$tmp1 = "Earl Britanico"; $tmp2 = 2773; $tmp3 = strtolower(str_replace(" ", "", $tmp1));
 	#$tmp1 = "Noel Reyes"; $tmp2 = 2623; $tmp3 = strtolower(str_replace(" ", "", $tmp1));

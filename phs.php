@@ -21,7 +21,7 @@
 
 	//authentication
 	if($_POST["username"] && $_POST["password"]) {
-		require_once("authenticate.inc");
+		require_once("includes/authenticate.inc");
 	}
 
 	//which area are we going into

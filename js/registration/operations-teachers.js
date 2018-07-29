@@ -4,8 +4,42 @@
 var teachers = null;
 var deptsCourses = null;
 var teachersAssigns = [];
+var newCourseId = null;
 
 var semPerCol = {"11":4,"12":5,"13":6,"14":7,"21":4,"22":5,"23":6,"24":7};
+
+function set_new_course_id(obj) {
+
+	var tbl = document.getElementById("teacherTable");
+	var popUp = document.getElementById("course_popup");
+	var popUpContent = document.getElementById("course_popup_content");
+
+	popUp.classList.remove("show_popup");
+
+	if(typeof obj == "object") {
+		var text = obj.innerHTML.trim();
+		var tmp = text.split(" ", 2);
+		var courseId = tmp[0];
+		
+		rIndex = popUpContent.getElementsByTagName("input")[0].value;
+		cIndex = popUpContent.getElementsByTagName("input")[1].value;
+		
+		tbl.rows[rIndex].cells[cIndex].innerHTML = text;
+	}
+
+	reset_popup();
+
+}
+
+function reset_popup() {
+	var popUpContent = document.getElementById("course_popup_content");
+	var spans = popUpContent.getElementsByTagName("span");
+	while(spans[4] != undefined) {
+		popUpContent.removeChild(spans[4]);
+	}
+	spans[2].innerHTML = "";
+	spans[1].innerHTML = "";
+}
 
 function choose_course(obj) {
 
@@ -14,41 +48,62 @@ function choose_course(obj) {
 	var cIndex = obj.cellIndex;
 	var row = obj.parentNode;
 	var rIndex = row.rowIndex;
+
+	console.log("object params:", rIndex, cIndex);
+
+
 	var dept = row.getElementsByTagName("data")[0].innerHTML;
 	var teacherName = row.getElementsByTagName("data")[2].innerHTML;
 	
 	var currentCourse = obj.innerHTML;
-	var semPer = tbl.rows[1].cells[cIndex].innerHTML;
+	var semPer = tbl.rows[1].cells[cIndex - 4].innerHTML;
 	
-	//console.log("choose_course_params:", dept, teacherName, currentCourse, semPer);
-	
-	var text = "Assign Period " + semPer + " Course for\n";
-	text += "Teacher: " + teacherName + ", dept: " + dept + ".\n\n";
-	
+	//console.log("course params:", dept, teacherName, currentCourse, semPer);
+
 	var textArr = [];
 	
+	reset_popup();
+	var popUp = document.getElementById("course_popup");
+	var popUpContent = document.getElementById("course_popup_content");
+	
+	var spans = popUpContent.getElementsByTagName("span");
+	spans[1].innerHTML = teacherName;
+	spans[2].innerHTML = semPer;
+	sIndex = 2;
+	
+	var inputs = popUpContent.getElementsByTagName("input");
+	inputs[0].value = rIndex;
+	inputs[1].value = cIndex;
+	
 	for(i=0, il=deptsCourses.length; i<il; i++) {
+	
+		if(dept.substr(0, 3) == "CTE") {
+			
+		}
+	
 		if(deptsCourses[i].abbrev == dept) {
 			textArr.length = 0;
 			for(j=0, jl=deptsCourses[i].courses.length; j<jl; j++) {
 				var courseId = deptsCourses[i].courses[j].courseId;
 				var crsSName = deptsCourses[i].courses[j].courseNameShort;
 				if(crsSName) {
-					text += courseId + " " + crsSName + "\n";
+					sIndex++;
+					if(spans[sIndex] == undefined) {
+						var cln = spans[sIndex - 1].cloneNode(true);
+						var theSpan = popUpContent.appendChild(cln);
+					} else {
+						var theSpan = spans[sIndex];
+					}
 					textArr.push({"courseId": courseId, "courseNameShort": crsSName});
+					theSpan.innerHTML = courseId + " " + crsSName;
 				}
 			}
 			break;
 		}
 	}
 	
-	text += "\nEnter CourseId:";
-	//console.log(textArr);
+	popUp.classList.add("show_popup");
 
-	var chosenCourse = prompt(text, currentCourse);
-	if(chosenCourse != null) {
-		obj.value = chosenCourse;
-	}
 }
 
 function clear_table(obj) {

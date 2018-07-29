@@ -35,16 +35,35 @@
 			<td><data value="teacherId"></data><input type=hidden name="teacherId" value="" /></td>
 			<td><data value="teacherName"></data></td>
 			<td><input type=checkbox name="active" value="" /></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
-			<td onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
+			<td style="cursor: pointer" onclick="choose_course(this);"></td>
 		</tr>
 	</tbody>
 </table>
+
+<div id="course_popup" class="course_popup">
+	<div id="course_popup_content" class="course_popup_content">
+		<div style="float: right;">
+			<span style="cursor: pointer; font-weight: bold; display: inline-block; border: 1px solid grey; color: grey;" onclick="set_new_course_id(0);">&nbsp; x &nbsp;</span>
+		</div>
+		<div style="float: left; text-align: left; font-weight: bold;">Course Selector</div>
+		<div style="clear: both;"></div>
+	
+		<input type=hidden name=rIndex value="" />
+		<input type=hidden name=cIndex value="" />
+	
+		<table>
+			<tr><td style="text-align: right; font-size: small; color: grey;">Teacher:</td><td style="text-align: left;"><span></span></td><tr>
+			<tr><td style="text-align: right; font-size: small; color: grey;">semPer:</td><td style="text-align: left;"><span></span></td><tr>
+		</table>
+		<span style="cursor: pointer; display: block;" onclick="set_new_course_id(this);"></span>
+	</div>
+</div>
 
 <script type="text/javascript">{incJS}</script>
