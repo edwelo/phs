@@ -50,19 +50,29 @@
 <div id="course_popup" class="course_popup">
 	<div id="course_popup_content" class="course_popup_content">
 		<div style="float: right;">
-			<span style="cursor: pointer; font-weight: bold; display: inline-block; border: 1px solid grey; color: grey;" onclick="set_new_course_id(0);">&nbsp; x &nbsp;</span>
+			<span style="cursor: pointer; font-weight: bold; display: inline-block; border: 1px solid grey; color: grey;" onclick="set_new_course_id(0);">&nbsp;&times;&nbsp;</span>
 		</div>
 		<div style="float: left; text-align: left; font-weight: bold;">Course Selector</div>
 		<div style="clear: both;"></div>
 	
 		<input type=hidden name=rIndex value="" />
 		<input type=hidden name=cIndex value="" />
-	
+
 		<table>
 			<tr><td style="text-align: right; font-size: small; color: grey;">Teacher:</td><td style="text-align: left;"><span></span></td><tr>
 			<tr><td style="text-align: right; font-size: small; color: grey;">semPer:</td><td style="text-align: left;"><span></span></td><tr>
 		</table>
-		<span style="cursor: pointer; display: block;" onclick="set_new_course_id(this);"></span>
+		<div id="course_links" style="float: right;">
+			Choose New Course:<br />
+			<span style="cursor: pointer; display: block;" onclick="set_new_course_id(this);"></span>
+		</div>
+		<p>
+			Current Course:<br />
+			<span id="current_course"></span>
+			<br /><br />
+			<button type="button" onclick="set_new_course_id('clear');">
+				Clear current course
+			</button>
 	</div>
 </div>
 

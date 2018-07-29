@@ -10,19 +10,22 @@ var semPerCol = {"11":4,"12":5,"13":6,"14":7,"21":4,"22":5,"23":6,"24":7};
 
 function set_new_course_id(obj) {
 
-	var tbl = document.getElementById("teacherTable");
-	var popUp = document.getElementById("course_popup");
-	var popUpContent = document.getElementById("course_popup_content");
+	document.getElementById("course_popup").classList.remove("show_popup");
 
-	popUp.classList.remove("show_popup");
+	var popUpContent = document.getElementById("course_popup_content");
+	rIndex = popUpContent.getElementsByTagName("input")[0].value;
+	cIndex = popUpContent.getElementsByTagName("input")[1].value;
+		
+	var tbl = document.getElementById("teacherTable");
+
+	if(obj == "clear") {
+		tbl.rows[rIndex].cells[cIndex].innerHTML = "";
+	}
 
 	if(typeof obj == "object") {
 		var text = obj.innerHTML.trim();
 		var tmp = text.split(" ", 2);
 		var courseId = tmp[0];
-		
-		rIndex = popUpContent.getElementsByTagName("input")[0].value;
-		cIndex = popUpContent.getElementsByTagName("input")[1].value;
 		
 		tbl.rows[rIndex].cells[cIndex].innerHTML = text;
 	}
@@ -33,12 +36,17 @@ function set_new_course_id(obj) {
 
 function reset_popup() {
 	var popUpContent = document.getElementById("course_popup_content");
-	var spans = popUpContent.getElementsByTagName("span");
-	while(spans[4] != undefined) {
-		popUpContent.removeChild(spans[4]);
+	popUpContent.getElementsByTagName("input")[0].value = "";
+	popUpContent.getElementsByTagName("input")[1].value = "";
+	popUpContent.getElementsByTagName("span")[1].innerHTML = "";
+	popUpContent.getElementsByTagName("span")[2].innerHTML = "";
+	
+	var div = document.getElementById("course_links");
+	var spans = div.getElementsByTagName("span");
+	spans[0].innerHTML = "";
+	while(spans[1] != undefined) {
+		div.removeChild(spans[1]);
 	}
-	spans[2].innerHTML = "";
-	spans[1].innerHTML = "";
 }
 
 function choose_course(obj) {
@@ -49,8 +57,7 @@ function choose_course(obj) {
 	var row = obj.parentNode;
 	var rIndex = row.rowIndex;
 
-	console.log("object params:", rIndex, cIndex);
-
+	//console.log("object params:", rIndex, cIndex);
 
 	var dept = row.getElementsByTagName("data")[0].innerHTML;
 	var teacherName = row.getElementsByTagName("data")[2].innerHTML;
@@ -60,25 +67,29 @@ function choose_course(obj) {
 	
 	//console.log("course params:", dept, teacherName, currentCourse, semPer);
 
-	var textArr = [];
-	
 	reset_popup();
+	
 	var popUp = document.getElementById("course_popup");
 	var popUpContent = document.getElementById("course_popup_content");
 	
-	var spans = popUpContent.getElementsByTagName("span");
-	spans[1].innerHTML = teacherName;
-	spans[2].innerHTML = semPer;
-	sIndex = 2;
+	popUpContent.getElementsByTagName("span")[1].innerHTML = teacherName;
+	popUpContent.getElementsByTagName("span")[2].innerHTML = semPer;
 	
-	var inputs = popUpContent.getElementsByTagName("input");
-	inputs[0].value = rIndex;
-	inputs[1].value = cIndex;
+	popUpContent.getElementsByTagName("input")[0].value = rIndex;
+	popUpContent.getElementsByTagName("input")[1].value = cIndex;
 	
+	document.getElementById("current_course").innerHTML = currentCourse;
+	
+	var textArr = [];
+	
+	var divCourseLinks = document.getElementById("course_links");
+	var spans = divCourseLinks.getElementsByTagName("span");
+	
+	sIndex = 0;
 	for(i=0, il=deptsCourses.length; i<il; i++) {
 	
 		if(dept.substr(0, 3) == "CTE") {
-			
+			;
 		}
 	
 		if(deptsCourses[i].abbrev == dept) {
@@ -87,15 +98,15 @@ function choose_course(obj) {
 				var courseId = deptsCourses[i].courses[j].courseId;
 				var crsSName = deptsCourses[i].courses[j].courseNameShort;
 				if(crsSName) {
-					sIndex++;
 					if(spans[sIndex] == undefined) {
 						var cln = spans[sIndex - 1].cloneNode(true);
-						var theSpan = popUpContent.appendChild(cln);
+						var theSpan = divCourseLinks.appendChild(cln);
 					} else {
 						var theSpan = spans[sIndex];
 					}
 					textArr.push({"courseId": courseId, "courseNameShort": crsSName});
 					theSpan.innerHTML = courseId + " " + crsSName;
+					sIndex++;
 				}
 			}
 			break;
